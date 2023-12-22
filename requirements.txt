@@ -1,5 +1,5 @@
 streamlit
 google
-google-cloud-core==2.2.1
-google-cloud-palm==1.0.0
+google-cloud-core
+google-cloud-palm>=1.0.0
 python-dotenv
