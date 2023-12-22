@@ -1,26 +1,10 @@
 import streamlit as st
-from google.api_core import retry
-from dotenv import load_dotenv
-# Importing palm, retry functions, and other dependencies
 import google.generativeai as palm
 import os
 
-# Load environment variables from .env file
-load_dotenv()
-
 # Configure API key
-api_key = os.getenv("GOOGLE_API_KEY")
+api_key = "AIzaSyANRYSr7eexKrBxwketjhWxtwt7lrei_OI"
 palm.configure(api_key=api_key)
-
-# Function to retry chat with exponential backoff
-@retry.Retry()
-def retry_chat(**kwargs):
-    return palm.chat(**kwargs)
-
-# Function to retry reply with exponential backoff
-@retry.Retry()
-def retry_reply(arg):
-    return palm.reply(arg)
 
 # Streamlit app
 def main():
@@ -40,8 +24,8 @@ def main():
 
     if st.button("Submit"):
         if question:
-            # Retry chat interaction
-            response = retry_chat(
+            # Chat interaction
+            response = palm.chat(
                 model=selected_model,
                 context="You are a professional Indonesian translator and good at summarizing a paragraph.",
                 messages=question,
