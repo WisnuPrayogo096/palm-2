@@ -1,3 +1,5 @@
 streamlit
 google
+google-cloud-core
+google-cloud-palm
 python-dotenv
